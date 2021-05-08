@@ -1,0 +1,38 @@
+body {
+    background-color:#0e0352;
+    color: #FFFFFF;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+* {
+    margin:3px;
+}
+
+textarea, input {
+    background-color:#6f00ff36;
+    color: #FFFFFF;
+}
+
+textarea.fullWidth {
+    width: 95vw;
+    margin: auto;
+    padding: 3px;
+}
+
+textarea.halfWidth {
+    width: 45vw;
+    margin: auto;
+    padding: 3px;
+}
+
+.mediumWidthInput {
+    width: 180px;
+}
+
+.smallWidthInput {
+    width: 50px;
+}
+
+.smallishWidthInput {
+    width: 80px;
+}
