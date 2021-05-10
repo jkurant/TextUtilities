@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jason's Text Utilities</title>
+        <link rel="stylesheet" type="text/css" href="Text Utilities.css">
+        <script src="Text Utilities.js"></script>
+    </head>
+    <body>
+        <H1>Jason's Text Utilities</H1>
+        <div class="horizontal-line"></div>
+        <H2>Line Utilities</H2>
+        <P>Enter the lines to process</P>
+        <textarea class="fullWidth" id="textLines" rows=10></textarea>
+        <P>Combine lines
+            <input class="smallishWidthInput" type="text" id="delimiter" placeholder="Delimiter" />
+            <button onClick="ConcatenateLines();">Concatenate</button>
+        </P>
+        <button onClick="TrimLines();">Trim Lines</button>
+        <button onClick="UniquifyLines();">Uniquify Lines</button>
+        <button onClick="SortLines();">Sort Lines</button>
+        <button onClick="UniquifyAndSortLines();">Uniquify and Sort Lines</button>
+        <P>Regular Expression:
+            <input class="mediumWidthInput" type="text" id="regExFind" placeholder="Find this regular expression" />
+            ,
+            <input class="mediumWidthInput" type="text" id="regExReplace" placeholder="Replace with this string" />
+            ,
+            <input class="smallWidthInput" type="text" id="regExFlags" placeholder="flags" />
+            <button onClick="RegExReplaceLines();">Replace</button>
+        </P>
+        <P>Result</P>
+        <textarea class="fullWidth" id="linesResult" rows=10 cols=100></textarea>
+        <button onClick="CopyOutputToInput();">Copy result to input lines</button>
+        <button onClick="CopyOutputToListA();">Copy result to List A below</button>
+        <button onClick="CopyOutputToListB();">Copy result to List B below</button>
+
+        <div class="horizontal-line"> </div>
+        <H2>List Utilities</H2>
+        <table>
+            <TR>
+                <TD>
+                    <p>List A</p>
+                    <textarea class="halfWidth" id="listA" rows=10 cols=40></textarea>
+                </TD>
+                <TD>
+                    <p>List B</p>
+                    <textarea class="halfWidth" id="listB" rows=10 cols=40></textarea>
+                </TD>
+            </TR>
+            <tr>
+                <td colspan=2>
+                    <P><button onClick="A_AND_B();">A & B</button>Intersection</P>
+                    <P><button onClick="A_OR_B();">A | B</button>Union</P>
+                    <P><button onClick="A_MINUS_B();">A - B</button>In A but not B</P>
+                    <P><button onClick="B_MINUS_A();">B - A</button>In B but not A</P>
+                    <input type="checkbox" id="caseInsensitive" name="caseInsensitive" />
+                    <label for="caseInsensitive">Case-insensitive comparison</label>
+                    &nbsp; &nbsp;
+                    <input type="checkbox" id="uniquifyListResult" name="uniquifyListResult" />
+                    <label for="uniquifyListResult">Uniquify result</label>
+                    &nbsp; &nbsp;
+                    <input type="checkbox" id="sortListResult" name="sortListResult" />
+                    <label for="sortListResult">Sort result</label>
+                    <textarea class="fullWidth" id="listResult" rows=10 cols=100></textarea>
+                </td>
+            </tr>
+        </table>
+
+            
+    </body>
+</html>
