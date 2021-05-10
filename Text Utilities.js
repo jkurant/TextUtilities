@@ -83,3 +83,92 @@ function CopyOutputToListB() {
     let result = document.getElementById('linesResult').value;
     document.getElementById('listB').value = result;
 }
+
+function A_AND_B() {
+    let listAText = document.getElementById('listA').value;
+    let aA = listAText.split("\n");
+
+    let listBText = document.getElementById('listB').value;
+    let aB = listBText.split("\n");
+
+    let caseInsensitive = document.getElementById("caseInsensitive").checked;
+    let aResult = null;
+
+    if (caseInsensitive) {
+        let aUB = aB.map( textLine => textLine.toUpperCase() );
+        aResult = aA.filter( textLine => aUB.includes(textLine.toUpperCase()) );
+    } else {
+        aResult = aA.filter( textLine => aB.includes(textLine) );
+    }
+
+    let result = aResult.join("\n");
+
+    result = SortAndUniquifyIfSelectedForList(result);
+    document.getElementById("listResult").value = result;
+}
+
+function A_OR_B() {
+    let listAText = document.getElementById('listA').value;
+    let listBText = document.getElementById('listB').value;
+
+    let result = listAText + "\n" + listBText;
+
+    result = SortAndUniquifyIfSelectedForList(result);
+    document.getElementById("listResult").value = result;
+}
+
+function A_MINUS_B() {
+    let listAText = document.getElementById('listA').value;
+    let aA = listAText.split("\n");
+
+    let listBText = document.getElementById('listB').value;
+    let aB = listBText.split("\n");
+
+    let caseInsensitive = document.getElementById("caseInsensitive").checked;
+    let aResult = null;
+
+    if (caseInsensitive) { 
+        let aUB = aB.map( textLine => textLine.toUpperCase() );
+        aResult = aA.filter( textLine => !aUB.includes(textLine.toUpperCase()) );
+    } else {
+        aResult = aA.filter( textLine => !aB.includes(textLine) );
+    }
+
+    let result = aResult.join("\n");
+
+    result = SortAndUniquifyIfSelectedForList(result);
+    document.getElementById("listResult").value = result;
+}
+
+function B_MINUS_A() {
+    let listAText = document.getElementById('listA').value;
+    let aA = listAText.split("\n");
+
+    let listBText = document.getElementById('listB').value;
+    let aB = listBText.split("\n");
+
+    let caseInsensitive = document.getElementById("caseInsensitive").checked;
+    let aResult = null;
+
+    if (caseInsensitive) { 
+        let aUA = aA.map( textLine => textLine.toUpperCase() );
+        aResult = aB.filter( textLine => !aUA.includes(textLine.toUpperCase()) );
+    } else {
+        aResult = aB.filter( textLine => !aA.includes(textLine) );
+    }
+    let result = aResult.join("\n");
+
+    result = SortAndUniquifyIfSelectedForList(result);
+    document.getElementById("listResult").value = result;
+}
+
+function SortAndUniquifyIfSelectedForList( result) {
+    let retVal = result;
+    if (document.getElementById("uniquifyListResult").checked) {
+        retVal = UniquifyString(retVal);
+    }
+    if (document.getElementById("sortListResult").checked) {
+        retVal = SortString(retVal);
+    }
+    return retVal;
+}

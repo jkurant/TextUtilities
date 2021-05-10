@@ -7,10 +7,10 @@
     </head>
     <body>
         <H1>Jason's Text Utilities</H1>
-        <HR />
+        <div class="horizontal-line"></div>
         <H2>Line Utilities</H2>
         <P>Enter the lines to process</P>
-        <textarea class="fullWidth" id="textLines" rows=10 cols=100></textarea>
+        <textarea class="fullWidth" id="textLines" rows=10></textarea>
         <P>Combine lines
             <input class="smallishWidthInput" type="text" id="delimiter" placeholder="Delimiter" />
             <button onClick="ConcatenateLines();">Concatenate</button>
@@ -33,7 +33,7 @@
         <button onClick="CopyOutputToListA();">Copy result to List A below</button>
         <button onClick="CopyOutputToListB();">Copy result to List B below</button>
 
-        <HR />
+        <div class="horizontal-line"> </div>
         <H2>List Utilities</H2>
         <table>
             <TR>
@@ -51,12 +51,15 @@
                     <P><button onClick="A_AND_B();">A & B</button>Intersection</P>
                     <P><button onClick="A_OR_B();">A | B</button>Union</P>
                     <P><button onClick="A_MINUS_B();">A - B</button>In A but not B</P>
-                    <P><button onClick="B_MINUS_A();">A - B</button>In B but not A</P>
-                    <input type="checkbox" id="sortListResult" name="sortListResult" />
-                    <label for="sortListResult">Sort result</label>
+                    <P><button onClick="B_MINUS_A();">B - A</button>In B but not A</P>
+                    <input type="checkbox" id="caseInsensitive" name="caseInsensitive" />
+                    <label for="caseInsensitive">Case-insensitive comparison</label>
                     &nbsp; &nbsp;
                     <input type="checkbox" id="uniquifyListResult" name="uniquifyListResult" />
                     <label for="uniquifyListResult">Uniquify result</label>
+                    &nbsp; &nbsp;
+                    <input type="checkbox" id="sortListResult" name="sortListResult" />
+                    <label for="sortListResult">Sort result</label>
                     <textarea class="fullWidth" id="listResult" rows=10 cols=100></textarea>
                 </td>
             </tr>
