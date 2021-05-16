@@ -14,16 +14,14 @@
         <textarea class="fullWidth" id="textLines" rows=10></textarea>
         <P>Join lines
             <input class="smallishWidthInput" type="text" id="joinDelimiter" placeholder="Delimiter" />
-            <span class="tooltip">
+            <span>
                 <button onClick="JoinLines();">Join</button>
-                <span class="tooltiptext">Combine the lines above into one line using the specified delimiter</span>
             </span>        
             </P>
         <P>Split lines
             <input class="smallishWidthInput" type="text" id="splitDelimiter" placeholder="Delimiter" />
-            <span class="tooltip">
+            <span>
                 <button onClick="SplitLines();">Split</button>
-                <span class="tooltiptext">Split the text above into lines using the specified delimiter</span>
             </span>        
         </P>
         <P>
@@ -31,13 +29,11 @@
             <button onClick="toLowercase();">to Lowercase</button>
         </P>
         <p>
-        <div class="tooltip">
+        <div>
             <button onClick="TrimLines();">Trim Lines</button>
-            <span class="tooltiptext">Removes leading and trailing spaces from every line</span>
         </div>        
-        <div class="tooltip">
+        <div>
             <button onClick="UniquifyLines();">Uniquify Lines</button>
-            <span class="tooltiptext">Returns just the unique lines</span>
         </div>        
         <button onClick="SortLines();">Sort Lines</button>
         <button onClick="UniquifyAndSortLines();">Uniquify and Sort Lines</button>
@@ -72,10 +68,10 @@
             </TR>
             <tr>
                 <td colspan=2>
-                    <P class="tooltip"><button onClick="A_AND_B();">A & B</button>Intersection<span class="tooltiptext">Finds all the lines that are in both A and B</span></P><BR />
-                    <P class="tooltip"><button onClick="A_OR_B();">A | B</button>Union<span class="tooltiptext">Finds all the lines that are in either A or B</span></P><BR />
-                    <P class="tooltip"><button onClick="A_MINUS_B();">A - B</button>In A but not in B<span class="tooltiptext">Finds all the lines that are in A but not in B</span></P><BR />
-                    <P class="tooltip"><button onClick="B_MINUS_A();">B - A</button>In B but not in A<span class="tooltiptext">Finds all the lines that are in B but not A</span></P><BR />
+                    <P><button onClick="A_AND_B();">A & B</button>Intersection</P>
+                    <P><button onClick="A_OR_B();">A | B</button>Union</P>
+                    <P><button onClick="A_MINUS_B();">A - B</button>In A but not in B</P>
+                    <P><button onClick="B_MINUS_A();">B - A</button>In B but not in A</P>
                     <input type="checkbox" id="caseInsensitive" name="caseInsensitive" />
                     <label for="caseInsensitive">Case-insensitive comparison</label>
                     &nbsp; &nbsp;
