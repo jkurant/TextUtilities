@@ -1,7 +1,14 @@
-function ConcatenateLines() {
+function JoinLines() {
     let textLines = document.getElementById('textLines').value;
-    const delimiter = document.getElementById('delimiter').value;
+    const delimiter = document.getElementById('joinDelimiter').value;
     let result = textLines.split("\n").join(delimiter);
+    document.getElementById("linesResult").value = result;
+}
+
+function SplitLines() {
+    let textLines = document.getElementById('textLines').value;
+    const delimiter = document.getElementById('splitDelimiter').value;
+    let result = textLines.split(delimiter).join("\n");
     document.getElementById("linesResult").value = result;
 }
 
@@ -29,6 +36,14 @@ function RegExReplaceLines() {
     document.getElementById("linesResult").value = result;
 }
 
+function toLowercase() {
+    document.getElementById("linesResult").value = document.getElementById('textLines').value.toLowerCase();
+}
+
+function toUppercase() {
+    document.getElementById("linesResult").value = document.getElementById('textLines').value.toUpperCase();
+}
+
 function UniquifyLines() {
     let textLines = document.getElementById('textLines').value;
     let result = UniquifyString(textLines);
@@ -45,6 +60,22 @@ function UniquifyAndSortLines() {
     let textLines = document.getElementById('textLines').value;
     textLines = UniquifyString(textLines);
     let result = SortString(textLines);
+    document.getElementById("linesResult").value = result;
+}
+
+function ReverseLines() {
+    let textLines = document.getElementById('textLines').value;
+    let lines = textLines.split("\n");
+    let newStr = '';
+    lines.forEach( (textLine) => {
+        if (newStr == '') {
+            newStr = textLine;
+        } else {
+            newStr = textLine + "\n" + newStr;
+        }
+    });
+    //let result = newStr.substring(0,newStr.length-1);
+    let result = newStr;
     document.getElementById("linesResult").value = result;
 }
 
