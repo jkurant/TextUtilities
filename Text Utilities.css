@@ -58,6 +58,10 @@ textarea.halfWidth {
     padding: 3px;
 }
 
+.largeWidthInput {
+    width: 270px;
+}
+
 .mediumWidthInput {
     width: 180px;
 }

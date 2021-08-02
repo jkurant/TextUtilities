@@ -243,3 +243,51 @@ function SortAndUniquifyIfSelectedForList( result) {
     }
     return retVal;
 }
+
+function TruncateBefore() {
+    let delimiter = document.getElementById('truncateString').value;
+    let textLines = document.getElementById('textLines').value;
+    //alert('textLines = ' + textLines);
+    let lines = textLines.split("\n");
+    let newStr = '';
+    lines.forEach( (textLine) => {
+        if (textLine.indexOf(delimiter) >= 0) {
+            // truncate textline
+            textLine = textLine.substring(textLine.indexOf(delimiter)+delimiter.length);
+        } else {
+            // textline is good as is
+        }
+        if (newStr == '') {
+            newStr = textLine;
+        } else {
+            newStr = newStr + "\n" + textLine;
+        }
+    });
+    let result = newStr;
+    document.getElementById("linesResult").value = result;
+   
+}
+
+function TruncateAfter() {
+    let delimiter = document.getElementById('truncateString').value;
+    let textLines = document.getElementById('textLines').value;
+    //alert('textLines = ' + textLines);
+    let lines = textLines.split("\n");
+    let newStr = '';
+    lines.forEach( (textLine) => {
+        if (textLine.indexOf(delimiter) >= 0) {
+            // truncate textline
+            textLine = textLine.substring(0,textLine.indexOf(delimiter));
+        } else {
+            // textline is good as is
+        }
+        if (newStr == '') {
+            newStr = textLine;
+        } else {
+            newStr = newStr + "\n" + textLine;
+        }
+    });
+    let result = newStr;
+    document.getElementById("linesResult").value = result;
+   
+}
