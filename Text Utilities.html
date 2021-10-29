@@ -1,70 +1,119 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Jason's Text Utilities</title>
+        <title>Jason's Hunley Text Utilities</title>
         <link rel="stylesheet" type="text/css" href="Text Utilities.css">
         <script src="Text Utilities.js"></script>
     </head>
     <body>
-        <H1>Jason's Text Utilities</H1>
+        <H1>Jason's Hunley Text Utilities</H1>
+        <!-- comment -->
+        <P class="small">These are some text and list processing tools that I often need as a developer. If you find any bugs or would like a new feature, or would like to add a new feature, please contact Jason Kurant.</P>
         <div class="horizontal-line"></div>
-        <H2>Line Utilities</H2>
-        <P>Enter the lines to process</P>
-        <textarea class="fullWidth" id="textLines" rows=10></textarea>
-        <P>Combine lines
-            <input class="smallishWidthInput" type="text" id="delimiter" placeholder="Delimiter" />
-            <button onClick="ConcatenateLines();">Concatenate</button>
-        </P>
-        <button onClick="TrimLines();">Trim Lines</button>
-        <button onClick="UniquifyLines();">Uniquify Lines</button>
-        <button onClick="SortLines();">Sort Lines</button>
-        <button onClick="UniquifyAndSortLines();">Uniquify and Sort Lines</button>
-        <P>Regular Expression:
-            <input class="mediumWidthInput" type="text" id="regExFind" placeholder="Find this regular expression" />
-            ,
-            <input class="mediumWidthInput" type="text" id="regExReplace" placeholder="Replace with this string" />
-            ,
-            <input class="smallWidthInput" type="text" id="regExFlags" placeholder="flags" />
-            <button onClick="RegExReplaceLines();">Replace</button>
-        </P>
-        <P>Result</P>
-        <textarea class="fullWidth" id="linesResult" rows=10 cols=100></textarea>
-        <button onClick="CopyOutputToInput();">Copy result to input lines</button>
-        <button onClick="CopyOutputToListA();">Copy result to List A below</button>
-        <button onClick="CopyOutputToListB();">Copy result to List B below</button>
-
+        <details class="expandableItem">
+            <summary class="expandableItem__summary">
+                Line Utilities
+            </summary>
+            <div class="expandableItem__contents">
+                <P>Enter the lines to process</P>
+                <textarea class="fullWidth" id="textLines" rows=10></textarea>
+                <P>Join lines
+                    <input class="smallishWidthInput" type="text" id="joinDelimiter" placeholder="Delimiter" />
+                    <span>
+                        <button onClick="JoinLines();">Join</button>
+                    </span>        
+                    </P>
+                <P>Split lines
+                    <input class="smallishWidthInput" type="text" id="splitDelimiter" placeholder="Delimiter" />
+                    <span>
+                        <button onClick="SplitLines();">Split</button>
+                    </span>        
+                </P>
+                <P>
+                    <button onClick="toUppercase();">to Uppercase</button>
+                    <button onClick="toLowercase();">to Lowercase</button>
+                </P>
+                <p>
+                    <button onClick="TrimLines();">Trim Lines</button>
+                    <button onClick="UniquifyLines();">Uniquify Lines</button>
+                <button onClick="SortLines();">Sort Lines</button>
+                <button onClick="UniquifyAndSortLines();">Uniquify and Sort Lines</button>
+                <button onClick="ReverseLines();">Reverse Lines</button>
+                </p>    
+        
+                <P>Simple Find &amp; Replace:
+                    <input class="mediumWidthInput" type="text" id="simpleFind" placeholder="Find this string" />
+                    ,
+                    <input class="mediumWidthInput" type="text" id="simpleReplace" placeholder="Replace with this string" />
+                    <button onClick="SimpleReplaceLines();">Replace</button>
+                </P>
+        
+                <P>Regular Expression:
+                    <input class="mediumWidthInput" type="text" id="regExFind" placeholder="Find this regular expression" />
+                    ,
+                    <input class="mediumWidthInput" type="text" id="regExReplace" placeholder="Replace with this string" />
+                    ,
+                    <input class="smallWidthInput" type="text" id="regExFlags" placeholder="flags" />
+                    <button onClick="RegExReplaceLines();">Replace</button>
+                </P>
+        
+                <P>Truncate Lines:
+                    <input class="largeWidthInput" type="text" id="truncateString" placeholder="Truncate before/after this string on each line" />
+                    <button onClick="TruncateBefore();">Truncate Before</button>
+                    <button onClick="TruncateAfter();">Truncate After</button>
+                </P>
+        
+                <P>Count characters
+                    <input class="mediumWidthInput" type="text" id="charactersToCount" placeholder="type the characters to count" value="&quot;'()[]{}<>-|/\.,;:~" />
+                    <span>
+                        <button onClick="CountCharacters();">Count</button>
+                    </span>        
+                </P>
+        
+                <P>Result</P>
+                <textarea class="fullWidth" id="linesResult" rows=10 cols=100></textarea>
+                <button onClick="CopyOutputToInput();">Copy result to input lines</button>
+                <button onClick="CopyOutputToListA();">Copy result to List A below</button>
+                <button onClick="CopyOutputToListB();">Copy result to List B below</button>
+        
+            </div>
+        </details>
         <div class="horizontal-line"> </div>
-        <H2>List Utilities</H2>
-        <table>
-            <TR>
-                <TD>
-                    <p>List A</p>
-                    <textarea class="halfWidth" id="listA" rows=10 cols=40></textarea>
-                </TD>
-                <TD>
-                    <p>List B</p>
-                    <textarea class="halfWidth" id="listB" rows=10 cols=40></textarea>
-                </TD>
-            </TR>
-            <tr>
-                <td colspan=2>
-                    <P><button onClick="A_AND_B();">A & B</button>Intersection</P>
-                    <P><button onClick="A_OR_B();">A | B</button>Union</P>
-                    <P><button onClick="A_MINUS_B();">A - B</button>In A but not B</P>
-                    <P><button onClick="B_MINUS_A();">B - A</button>In B but not A</P>
-                    <input type="checkbox" id="caseInsensitive" name="caseInsensitive" />
-                    <label for="caseInsensitive">Case-insensitive comparison</label>
-                    &nbsp; &nbsp;
-                    <input type="checkbox" id="uniquifyListResult" name="uniquifyListResult" />
-                    <label for="uniquifyListResult">Uniquify result</label>
-                    &nbsp; &nbsp;
-                    <input type="checkbox" id="sortListResult" name="sortListResult" />
-                    <label for="sortListResult">Sort result</label>
-                    <textarea class="fullWidth" id="listResult" rows=10 cols=100></textarea>
-                </td>
-            </tr>
-        </table>
-
-            
+        <details class="expandableItem">
+            <summary class="expandableItem__summary">
+                List Utilities
+            </summary>
+            <div class="expandableItem__contents">
+                <table>
+                    <TR>
+                        <TD>
+                            <p>List A</p>
+                            <textarea class="halfWidth" id="listA" rows=10 cols=40></textarea>
+                        </TD>
+                        <TD>
+                            <p>List B</p>
+                            <textarea class="halfWidth" id="listB" rows=10 cols=40></textarea>
+                        </TD>
+                    </TR>
+                    <tr>
+                        <td colspan=2>
+                            <P><button onClick="A_AND_B();">A & B</button>Intersection</P>
+                            <P><button onClick="A_OR_B();">A | B</button>Union</P>
+                            <P><button onClick="A_MINUS_B();">A - B</button>In A but not in B</P>
+                            <P><button onClick="B_MINUS_A();">B - A</button>In B but not in A</P>
+                            <input type="checkbox" id="caseInsensitive" name="caseInsensitive" />
+                            <label for="caseInsensitive">Case-insensitive comparison</label>
+                            &nbsp; &nbsp;
+                            <input type="checkbox" id="uniquifyListResult" name="uniquifyListResult" />
+                            <label for="uniquifyListResult">Uniquify result</label>
+                            &nbsp; &nbsp;
+                            <input type="checkbox" id="sortListResult" name="sortListResult" />
+                            <label for="sortListResult">Sort result</label>
+                            <textarea class="fullWidth" id="listResult" rows=10 cols=100></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </details>
     </body>
 </html>

@@ -1,7 +1,14 @@
-function ConcatenateLines() {
+function JoinLines() {
     let textLines = document.getElementById('textLines').value;
-    const delimiter = document.getElementById('delimiter').value;
+    const delimiter = document.getElementById('joinDelimiter').value;
     let result = textLines.split("\n").join(delimiter);
+    document.getElementById("linesResult").value = result;
+}
+
+function SplitLines() {
+    let textLines = document.getElementById('textLines').value;
+    const delimiter = document.getElementById('splitDelimiter').value;
+    let result = textLines.split(delimiter).join("\n");
     document.getElementById("linesResult").value = result;
 }
 
@@ -19,6 +26,14 @@ function TrimLines() {
     document.getElementById("linesResult").value = result;
 }
 
+function SimpleReplaceLines() {
+    let textLines = document.getElementById('textLines').value;
+    const findStr = document.getElementById('simpleFind').value;
+    const replaceStr = document.getElementById('simpleReplace').value;
+    let result = textLines.replaceAll(findStr, replaceStr);
+    document.getElementById("linesResult").value = result;
+}
+
 function RegExReplaceLines() {
     let textLines = document.getElementById('textLines').value;
     const RegExFindStr = document.getElementById('regExFind').value;
@@ -27,6 +42,46 @@ function RegExReplaceLines() {
     const RegExFind = new RegExp(RegExFindStr, RegExFlagsStr);
     let result = textLines.replace(RegExFind, RegExReplaceStr);
     document.getElementById("linesResult").value = result;
+}
+
+function toLowercase() {
+    document.getElementById("linesResult").value = document.getElementById('textLines').value.toLowerCase();
+}
+
+function toUppercase() {
+    document.getElementById("linesResult").value = document.getElementById('textLines').value.toUpperCase();
+}
+
+function CountCharacters() {
+    let text = document.getElementById('textLines').value;
+    let charsToFind = document.getElementById('charactersToCount').value;
+    charsToFind += "\t\n\r";
+    let charMap = new Map();
+    for (let i = 0; i < charsToFind.length; i++) {
+        const cc = charsToFind.charAt(i);
+        charMap.set(cc, 0);
+    }
+    for (let i = 0; i < text.length; i++) {
+        const c = text.charAt(i);
+        if (charsToFind.indexOf(c) > -1) {
+            if (charMap.has(c)) {
+                charMap.set(c, charMap.get(c)+1);
+            } else {
+                charMap.set(c, 1);
+            }
+        }
+    }
+    let msg = '';
+    let cShowAs = '';
+    for (let [c, count] of charMap) {
+        cShowAs = c; // find a way to display \t \r \n instead of the characters, but couldn't write the if statement to do this
+        cShowAs = cShowAs.replace(/\t/,'\\t');
+        cShowAs = cShowAs.replace(/\n/,'\\n');
+        cShowAs = cShowAs.replace(/\r/,'\\r');
+        msg = msg + cShowAs + ": " + count + "\n";
+      }
+    msg += 'All characters: ' + text.length;
+    document.getElementById("linesResult").value = msg;
 }
 
 function UniquifyLines() {
@@ -48,15 +103,31 @@ function UniquifyAndSortLines() {
     document.getElementById("linesResult").value = result;
 }
 
+function ReverseLines() {
+    let textLines = document.getElementById('textLines').value;
+    let lines = textLines.split("\n");
+    let newStr = '';
+    lines.forEach( (textLine) => {
+        if (newStr == '') {
+            newStr = textLine;
+        } else {
+            newStr = textLine + "\n" + newStr;
+        }
+    });
+    //let result = newStr.substring(0,newStr.length-1);
+    let result = newStr;
+    document.getElementById("linesResult").value = result;
+}
+
 function UniquifyString( stuff ) {
     let lines = stuff.split("\n");
     let newStr = '';
-    let seen = '';
+    let seen = "\n";
     lines.forEach( (textLine) => {
-        if (seen.indexOf(textLine) == -1) {
+        if (seen.indexOf("\n" + textLine + "\n") == -1) {
             newStr += textLine + "\n";
         }
-        seen += (textLine + '~');
+        seen += (textLine + "\n");
     });
     let result = (newStr.length > 0) ? newStr.substring(0,newStr.length-1) : '';
     return result;
@@ -171,4 +242,52 @@ function SortAndUniquifyIfSelectedForList( result) {
         retVal = SortString(retVal);
     }
     return retVal;
+}
+
+function TruncateBefore() {
+    let delimiter = document.getElementById('truncateString').value;
+    let textLines = document.getElementById('textLines').value;
+    //alert('textLines = ' + textLines);
+    let lines = textLines.split("\n");
+    let newStr = '';
+    lines.forEach( (textLine) => {
+        if (textLine.indexOf(delimiter) >= 0) {
+            // truncate textline
+            textLine = textLine.substring(textLine.indexOf(delimiter)+delimiter.length);
+        } else {
+            // textline is good as is
+        }
+        if (newStr == '') {
+            newStr = textLine;
+        } else {
+            newStr = newStr + "\n" + textLine;
+        }
+    });
+    let result = newStr;
+    document.getElementById("linesResult").value = result;
+   
+}
+
+function TruncateAfter() {
+    let delimiter = document.getElementById('truncateString').value;
+    let textLines = document.getElementById('textLines').value;
+    //alert('textLines = ' + textLines);
+    let lines = textLines.split("\n");
+    let newStr = '';
+    lines.forEach( (textLine) => {
+        if (textLine.indexOf(delimiter) >= 0) {
+            // truncate textline
+            textLine = textLine.substring(0,textLine.indexOf(delimiter));
+        } else {
+            // textline is good as is
+        }
+        if (newStr == '') {
+            newStr = textLine;
+        } else {
+            newStr = newStr + "\n" + textLine;
+        }
+    });
+    let result = newStr;
+    document.getElementById("linesResult").value = result;
+   
 }
