@@ -233,7 +233,7 @@ function B_MINUS_A() {
     document.getElementById("listResult").value = result;
 }
 
-function SortAndUniquifyIfSelectedForList( result) {
+function SortAndUniquifyIfSelectedForList(result) {
     let retVal = result;
     if (document.getElementById("uniquifyListResult").checked) {
         retVal = UniquifyString(retVal);

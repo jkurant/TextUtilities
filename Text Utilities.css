@@ -1,7 +1,7 @@
 *, ::before, ::after {
     box-sizing: border-box;
     margin: 3px;
-    padding: 0px;
+    padding: 0;
 }
 
 body {
@@ -17,7 +17,7 @@ details > summary {
 }
 
 p,div {
-    margin: 0px;
+    margin: 0;
 }
 
 P.small {
